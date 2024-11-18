@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image" href="/src/assets/iris-ro/logo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Iris-Ro</title>
+  </head>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+    <script>
+      // Disable right-click context menu
+      document.addEventListener("contextmenu", function (e) {
+        e.preventDefault();
+      });
+    
+      // Disable common keyboard shortcuts for opening developer tools
+      document.addEventListener("keydown", function (e) {
+        // Check for Ctrl + I (Inspect Element), Ctrl + U (View Source), Ctrl + J (Console), F12 (Developer Tools)
+        if (e.ctrlKey && (e.key === "I" || e.key === "U" || e.key === "J" || e.key === "F12")) {
+          e.preventDefault();
+        }
+      });
+    </script>    
+  </body>
+</html>

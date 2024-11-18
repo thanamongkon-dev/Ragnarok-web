@@ -1,0 +1,28 @@
+//===== rAthena Script =======================================
+-	script	PROMOTION	-1,{
+	end;
+	OnInit:
+
+	while (1)
+	{
+		query_sql "SELECT `pro_id`, `user_id`, `amount`, `itemId` FROM promotion WHERE `status` = 1 ORDER BY pro_id",.pro_id,.user_id,.amount,.itemId;
+		sleep 500;
+
+		if (getarraysize(.pro_id) > 0) {
+			for (set .i,0; .i < getarraysize(.pro_id); set .i,.i+1) {
+				if (.amount[.i] > 0 && attachrid(.user_id[.i]) == 1)
+				{
+					getitem .itemId;
+					dispbottom "[ Donate System ] : คุณได้รับไอเท็มโปรโมชั่น จำนวน " + .amount[.i];
+				}
+				query_sql "UPDATE promotion SET `status` = 2, added_time = NOW() WHERE `pro_id` = " + .pro_id[.i];
+				detachrid;
+			}
+			deletearray .pro_id[0],getarraysize(.pro_id);
+			deletearray .user_id[0],getarraysize(.user_id);
+			deletearray .amount[0],getarraysize(.amount);
+		}
+		sleep 5000;
+	}
+	end:
+}
