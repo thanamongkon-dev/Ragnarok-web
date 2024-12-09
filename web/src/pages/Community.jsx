@@ -5,18 +5,18 @@ const Community = () => {
   return (
     <section 
         id="community"
-        className="mx-auto w-full bg-slate-900 min-h-screen bg-fit bg-center"
+        className="w-full min-h-screen bg-fit bg-center"
         style={{ 
             backgroundImage: `url(${bg})`,
             backgroundColor: 'rgba(0, 0, 0, 0.6)', // Adjust the last value for opacity
             backgroundBlendMode: 'overlay' // Optional: to blend background with text
           }}
     >
-      <h1 className="text-3xl md:text-5xl font-bold m-8 text-white text-center">
+      <h1 className="text-3xl md:text-5xl font-bold text-white text-center">
         Server Community
       </h1>
       <div className="flex flex-wrap items-center justify-around my-12 md:my-24">
-        <div className="w-full md:w-1/2 p-4">
+        <div className="w-full md:w-1/2 py-4 px-14">
           <iframe
             src="https://e.widgetbot.io/channels/1251901477149212784/1251901477589483530?api=4cd13a30-ebc6-4b8f-af38-8f2d101895fc"
             width="100%"

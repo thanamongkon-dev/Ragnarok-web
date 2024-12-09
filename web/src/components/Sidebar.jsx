@@ -23,7 +23,7 @@ const Sidebar = () => {
     <>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className={`fixed top-[50%] ${isOpen ? 'right-44' : 'right-4'} z-50 p-2  text-white rounded-md focus:outline-none transition-all duration-300`}
+        className={`fixed top-[50%] ${isOpen ? 'right-44' : 'right-4'} z-50 p-2  text-white border rounded-md focus:outline-none transition-all duration-300`}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

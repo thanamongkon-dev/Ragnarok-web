@@ -14,10 +14,46 @@ import Premium from '../assets/event/Premium.jpg';
 const ContentGrid = () => {
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage, setPostsPerPage] = useState(3);
+  const [postsPerPage, setPostsPerPage] = useState(6);
 
   const [content, setContent] = useState(
     [
+      {
+        title: 'Maintenance ครั้งที่ 4',
+        description: 'รายละเอียดปิดปรับปรุง ครั้งที่ 4',
+        time: '20 hours ago',
+        image: Credit,
+      },
+      {
+        title: 'Weekend Of Investor ครั้งที่ 5',
+        description: 'Weekend Of Investor ครั้งที่ 5',
+        time: '5 days ago',
+        image: Item,
+      },
+      {
+        title: 'Maintenance ครั้งที่ 4',
+        description: 'รายละเอียดปิดปรับปรุง ครั้งที่ 4',
+        time: '20 hours ago',
+        image: LevelUP,
+      },
+      {
+        title: 'Weekend Of Investor ครั้งที่ 5',
+        description: 'Weekend Of Investor ครั้งที่ 5',
+        time: '20 hours ago',
+        image: Member,
+      },
+      {
+        title: 'Maintenance ครั้งที่ 4',
+        description: 'รายละเอียดปิดปรับปรุง ครั้งที่ 4',
+        time: '20 hours ago',
+        image: Online,
+      },
+      {
+        title: 'Weekend Of Investor ครั้งที่ 5',
+        description: 'Weekend Of Investor ครั้งที่ 5',
+        time: '5 days ago',
+        image: Premium,
+      },
       {
         title: 'Maintenance ครั้งที่ 4',
         description: 'รายละเอียดปิดปรับปรุง ครั้งที่ 4',
@@ -66,12 +102,13 @@ const ContentGrid = () => {
   return (
     <section
       id="news" 
-      className="flex flex-col items-center justify-center min-h-screen bg-fit bg-center text-white"
+      // className="flex flex-col items-center justify-center min-h-screen bg-fit bg-center text-white"
+      className="flex flex-col items-center justify-center min-h-screen bg-fit bg-center bg-gradient-to-t from-black to-transparent"
       style={{ 
-        backgroundImage: `url(${news})`,
+        // backgroundImage: `url(${news})`,
         // objectFit: 'cover',
-        backgroundColor: 'rgba(0, 0, 0, 0.6)', // Adjust the last value for opacity
-        backgroundBlendMode: 'overlay' // Optional: to blend background with text
+        // backgroundColor: 'rgba(0, 0, 0, 0.6)', // Adjust the last value for opacity
+        // backgroundBlendMode: 'overlay' // Optional: to blend background with text
       }}
     >
       <News content={currentPosts} />

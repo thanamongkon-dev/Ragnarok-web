@@ -8,10 +8,13 @@ import {
     Sidebar,
     LoginComponent,
     Member,
-    CreateNews
   } from '../components';
 
-import {Community, Download, PackageCard, ServerInfo} from './index.js';
+import {Community, Download, PackageCard, ServerInfo, CreateNews} from './index.js';
+import BgPage from '../assets/bg_page.jpg';
+import logo from '../assets/logo.png'
+
+import NewsForm from "../components/NewsForm.jsx";
 
 
 const Home = () => {
@@ -26,13 +29,13 @@ const Home = () => {
         }
     }, [location]);
     return (
-        <div className="relative flex flex-col min-h-screen overflow-hidden scroll-smooth">
+        <div className="relative flex flex-col min-h-screen bg-white overflow-hidden scroll-smooth">
             <Sidebar />
             <div
                 id="banner"
                 className="flex relative justify-center items-center w-screen min-h-[1080px] mx-auto text-white font-bold text-5xl"
             >
-                <video
+                {/* <video
                     autoPlay
                     loop
                     muted
@@ -40,15 +43,9 @@ const Home = () => {
                 >
                     <source src={mainBgVideo} type="video/mp4" />
                     Your browser does not support the video tag.
-                </video>
-                
-                {/* Status View */}
-                <div className="flex flex-rows justify-evenly items-center w-2/3 absolute bottom-12 z-20">
-                    <StatusCount />
-                    <StatusCount />
-                    <StatusCount />
-                    {/* <StatusCount /> */}
-                </div>
+                </video> */}
+                <img src={logo} className="absolute w-[700px] h-full z-50 object-contain object-center animate-scaleLoop" />
+                <img src={BgPage} className="absolute top-0 left-0 w-full h-full object-cover object-top" />
             </div>
             <ContentGrid />
             <Community />
@@ -56,6 +53,7 @@ const Home = () => {
             <ServerInfo />
             <PackageCard />
             <CreateNews />
+            <NewsForm />
             <Footer />
         </div>
     );
