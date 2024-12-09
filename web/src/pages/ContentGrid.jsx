@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Paginate from '../components/Paginate';
 import news from '../assets/iris-ro/bg1.jpg';
 import News from '../components/News';
@@ -10,93 +10,44 @@ import Member from '../assets/event/Member.jpg';
 import Online from '../assets/event/Online.jpg';
 import Premium from '../assets/event/Premium.jpg';
 
+import { fetchNews } from '../hooks/fetchNews';
+
 
 const ContentGrid = () => {
 
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage, setPostsPerPage] = useState(6);
+  const [content, setContent] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  const [content, setContent] = useState(
-    [
-      {
-        title: 'Maintenance ครั้งที่ 4',
-        description: 'รายละเอียดปิดปรับปรุง ครั้งที่ 4',
-        time: '20 hours ago',
-        image: Credit,
-      },
-      {
-        title: 'Weekend Of Investor ครั้งที่ 5',
-        description: 'Weekend Of Investor ครั้งที่ 5',
-        time: '5 days ago',
-        image: Item,
-      },
-      {
-        title: 'Maintenance ครั้งที่ 4',
-        description: 'รายละเอียดปิดปรับปรุง ครั้งที่ 4',
-        time: '20 hours ago',
-        image: LevelUP,
-      },
-      {
-        title: 'Weekend Of Investor ครั้งที่ 5',
-        description: 'Weekend Of Investor ครั้งที่ 5',
-        time: '20 hours ago',
-        image: Member,
-      },
-      {
-        title: 'Maintenance ครั้งที่ 4',
-        description: 'รายละเอียดปิดปรับปรุง ครั้งที่ 4',
-        time: '20 hours ago',
-        image: Online,
-      },
-      {
-        title: 'Weekend Of Investor ครั้งที่ 5',
-        description: 'Weekend Of Investor ครั้งที่ 5',
-        time: '5 days ago',
-        image: Premium,
-      },
-      {
-        title: 'Maintenance ครั้งที่ 4',
-        description: 'รายละเอียดปิดปรับปรุง ครั้งที่ 4',
-        time: '20 hours ago',
-        image: Credit,
-      },
-      {
-        title: 'Weekend Of Investor ครั้งที่ 5',
-        description: 'Weekend Of Investor ครั้งที่ 5',
-        time: '5 days ago',
-        image: Item,
-      },
-      {
-        title: 'Maintenance ครั้งที่ 4',
-        description: 'รายละเอียดปิดปรับปรุง ครั้งที่ 4',
-        time: '20 hours ago',
-        image: LevelUP,
-      },
-      {
-        title: 'Weekend Of Investor ครั้งที่ 5',
-        description: 'Weekend Of Investor ครั้งที่ 5',
-        time: '20 hours ago',
-        image: Member,
-      },
-      {
-        title: 'Maintenance ครั้งที่ 4',
-        description: 'รายละเอียดปิดปรับปรุง ครั้งที่ 4',
-        time: '20 hours ago',
-        image: Online,
-      },
-      {
-        title: 'Weekend Of Investor ครั้งที่ 5',
-        description: 'Weekend Of Investor ครั้งที่ 5',
-        time: '5 days ago',
-        image: Premium,
-      },
-      // Add more content objects here
-    ]
-  )
+  useEffect(() => {
+    const loadNews = async () => {
+      try {
+        const newsData = await fetchNews();
+        setContent(newsData);
+      } catch (error) {
+        setError(error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    loadNews();
+  },[])
+
 
   const lastPostIndex = currentPage * postsPerPage;
   const firstPostIndex = lastPostIndex - postsPerPage;
   const currentPosts = content.slice(firstPostIndex, lastPostIndex);
+
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+
+  if (error) {
+    return <p>Error: {error}</p>;
+  }
   
 
   return (
